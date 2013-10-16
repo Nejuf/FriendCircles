@@ -1,0 +1,14 @@
+<h1>New Friend Circle</h1>
+
+<form action="<%= user_friend_circles_url %>" method="post" accept-charset="utf-8">
+
+  <label for="name">Name</label><input type="text" name="friend_circle[name]" value="" id="name">
+
+  <% User.all.each do |user| %>
+    <label for="<%= user.id %>"><%= user.email %></label>
+    <input type="checkbox" name="friend_circle[user_ids][]" value="<%= user.id %>" id="<%= user.id %>">
+  <% end%>
+
+
+  <p><input type="submit" value="Submit"></p>
+</form>

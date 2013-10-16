@@ -1,0 +1,22 @@
+<form action="<%= user_posts_url%>" method="post" accept-charset="utf-8">
+  Share, share! <br>
+  <% @user.friend_circles.each do |friend_circle| %>
+    <label for="<%= friend_circle.id %>"><%= friend_circle.name %></label>
+    <input type="checkbox" name="post[friend_circle_ids][]" value="<%= friend_circle.id %>" id="<%= friend_circle.id %>">
+    <br>
+  <% end%>
+  <br>
+
+  <label for="title">Title</label>
+  <input type="text" name="post[title]" value="" id="title"> <br>
+
+  <label for="body">Body</label>
+  <input type="text" name="post[body]" value="" id="body"> <br>
+
+  <% @post.links.each_with_index do |link,index| %>
+  <label for="<%=index%>">URL</label>
+  <input type="text" name="links[<%=index%>][url]" value="" id="<%=index%>"> <br>
+  <% end %>
+
+  <p><input type="submit" value="Make post &rarr;"></p>
+</form>
